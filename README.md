@@ -25,7 +25,24 @@ open 2 terminals:
 2. Start the frontend client - cd client and after: npm start
 ![client](https://user-images.githubusercontent.com/44768171/223104032-08b72d6d-fcd6-440a-b9ba-c2b58eae1ecf.jpg)
 
-## Welcome!
+## Features 
+The Response Time Tracker application has the following features:
+* Tracks the response times of the listed websites over time.
+* Provides a REST API endpoint to expose the data.
+* Displays the data on a linear graph on the frontend.
+* Allows the user to start or stop the tests.
+* Saves the data when closing the browser and reopening the application.
+
+## Technology Stack
+The Response Time Tracker application uses the following technology stack:
+* ReactJS for the frontend
+* PostgreSQL for the database
+* Node.js and Express for the backend server
+
+## Conclusion
+This is a simple application that can be used to track the response times of a list of websites. It is efficient, supports multiple users simultaneously, 
+and allows you to use any external library of your choice.
+
 A. Dashboars with data:
 
 ![1f0da43d-9330-411f-89c3-53151f82d858](https://user-images.githubusercontent.com/44768171/223106171-0e3a7688-db20-4223-b476-bbc4c6c9b7f3.jpg)
