@@ -1,6 +1,5 @@
 # Websites-response-time-tracking
 
-
 ## Summary
 This is a web application that tests and records the response times of a list of common websites, 
 namely "google.com", "facebook.com", "twitter.com", "cnet.com", and "amazon.com". 
@@ -15,27 +14,21 @@ The application allows you to use any external library of your choice.
 
 
 
-## Run The Project
-1. Download this project to your computer using cmd
-```sh
+## Getting Started
+1. Clone the repository to your local machine 
 git clone https://github.com/orti10/Websites-response-time-tracking.git
+2. Install the dependencies by running `npm install` on the command line from the project directory.
+3. Configure the PostgreSQL database connection
 open 2 terminals:
-1. cd server 
-![8deb9ab2-a732-4f3e-b8d5-8411b5188a28](https://user-images.githubusercontent.com/44768171/223103973-27599b26-01cf-4ec9-a693-6edb3a9e303c.jpg)
+1. Start the backend server - cd server and after: nodemon index
+![8deb9ab2-a732-4f3e-b8d5-8411b5188a28](https://user-images.githubusercontent.com/44768171/223105083-87d2692f-8d74-44ba-b153-0596a4f9e889.jpg)
+2. Start the frontend client - cd client and after: npm start
+![client](https://user-images.githubusercontent.com/44768171/223104032-08b72d6d-fcd6-440a-b9ba-c2b58eae1ecf.jpg)
 
-2. cd client
-![22722084-62da-46a6-b49b-a6a3855cde47](https://user-images.githubusercontent.com/44768171/223104032-08b72d6d-fcd6-440a-b9ba-c2b58eae1ecf.jpg)
+## Welcome!
+A. Dashboars with data:
 
-```
-2. Install all dependencies
-```sh
-npm i
-```
-3. Run 
-```sh
-npm start
-```
+![1f0da43d-9330-411f-89c3-53151f82d858](https://user-images.githubusercontent.com/44768171/223106171-0e3a7688-db20-4223-b476-bbc4c6c9b7f3.jpg)
 
-Enjoy!
-
-![screenmusic](https://user-images.githubusercontent.com/44768171/144346382-78a15928-945f-4d74-9908-a5e2c7802950.jpg)
+B. Edit Dialog:
+![235acd94-e7d0-4a0e-ba91-ce6250b8510f](https://user-images.githubusercontent.com/44768171/223106348-58328b85-5b67-4d7c-8076-5b7ba8899285.jpg)
