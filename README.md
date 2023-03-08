@@ -51,5 +51,4 @@ B. Edit Dialog:
 ![235acd94-e7d0-4a0e-ba91-ce6250b8510f](https://user-images.githubusercontent.com/44768171/223106348-58328b85-5b67-4d7c-8076-5b7ba8899285.jpg)
 
 C. Postgres sql db:
-![cac5086b-d732-4d0e-b70b-348d5ee376d3](https://user-images.githubusercontent.com/44768171/223106637-afd601c1-e00d-406a-8919-2daf30dd300b.jpg)
-
+![39eae163-e04e-486d-8e5d-3c1c00006e09](https://user-images.githubusercontent.com/44768171/223847251-2fe30f15-0e95-4a7d-a94a-fdb6e6307660.jpg)
