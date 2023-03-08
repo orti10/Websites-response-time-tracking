@@ -11,7 +11,6 @@ async function getDomainResponseTime(domainUrl, timeout = 5000) {
     const end = new Date().getTime();
     const responseTime = end - start;
 
-    // console.log(`Response time for ${domainUrl}: ${responseTime}ms`);
     return responseTime;
   } catch (error) {
     console.error(`Error getting response time for ${domainUrl}: ${error}`);

@@ -9,23 +9,6 @@ const axios = require('axios');
 app.use(cors());
 app.use(express.json());
 
-// create a domain
-app.post("/domains", async (req, res) => {
-  try {
-    const { description } = req.body;
-    const responseTime = await getDomainResponseTime(`http://${description}`);
-    const newDomain = await pool.query(
-      "INSERT INTO domain (description, response_time) VALUES ($1, $2) RETURNING *",
-      [description, responseTime]
-    );
-
-    res.json(newDomain.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
 // endpoint to get response time for a list of domains
 app.post("/domains/responseTime", async (req, res) => {
   try {
@@ -51,7 +34,7 @@ app.post("/domains/responseTime", async (req, res) => {
 // get all domains
 app.get("/domains", async (req, res) => {
   try {
-    const allDomains = await pool.query("SELECT domain_id, description, response_time FROM domain");
+    const allDomains = await pool.query("SELECT domain_id, description, response_times FROM domain");
     res.json(allDomains.rows);
   } catch (err) {
     console.error(err.message);
@@ -59,55 +42,13 @@ app.get("/domains", async (req, res) => {
   }
 });
 
-// get a domain
-app.get("/domains/:id", async (req, res) => {
+
+app.put("/domains/:domain_id/responseTime", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { domain_id } = req.params;
     const domain = await pool.query("SELECT * FROM domain WHERE domain_id = $1", [
-      id
+      domain_id
     ]);
-
-    if (domain.rows.length === 0) {
-      return res.status(404).json({ error: "Domain not found" });
-    }
-
-    res.json(domain.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// update a domain
-app.put("/domains/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { description } = req.body;
-    const responseTime = await getDomainResponseTime(`http://${description}`);
-    const updateDomain = await pool.query(
-      "UPDATE domain SET description = $1, response_time = $2 WHERE domain_id = $3",
-      [description, responseTime, id]
-    );
-
-    if (updateDomain.rowCount === 0) {
-      return res.status(404).json({ error: "Domain not found" });
-    }
-
-    res.json("Domain was updated!");
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// recalculate response time for a domain
-app.put("/domains/:id/responseTime", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const domain = await pool.query("SELECT * FROM domain WHERE domain_id = $1", [
-      id
-    ]);
-
     if (domain.rows.length === 0) {
       return res.status(404).json({ error: "Domain not found" });
     }
@@ -116,41 +57,42 @@ app.put("/domains/:id/responseTime", async (req, res) => {
     const responseTime = await getDomainResponseTime(`http://${description}`);
 
     const updateDomain = await pool.query(
-      "UPDATE domain SET response_time = $1 WHERE domain_id = $2",
-      [responseTime, id]
+      "UPDATE domain SET response_times = $1 WHERE domain_id = $2",
+      [[...domain.rows[0].response_times, responseTime], domain_id]
     );
 
     if (updateDomain.rowCount === 0) {
       return res.status(404).json({ error: "Domain not found" });
     }
 
-    res.json({ message: "Domain response time updated successfully!" });
+    res.json({
+      error: null,
+      success: true,
+      responseTime,
+      message: "Domain response time updated successfully!"
+    });
   } catch (err) {
     console.error(err.message);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error", success: false });
   }
 });
 
-
-// delete a domain
-app.delete("/domains/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deleteDomain = await pool.query(
-      "DELETE FROM domain WHERE domain_id = $1",
-      [id]
-    );
-
-    if (deleteDomain.rowCount === 0) {
-      return res.status(404).json({ error: "Domain not found" });
-    }
-
-    res.json("Domain was deleted!");
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+// // get a domain
+// app.get("/domains/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const domain = await pool.query("SELECT * FROM domain WHERE domain_id = $1", [
+//       id
+//     ]);
+//     if (domain.rows.length === 0) {
+//       return res.status(404).json({ error: "Domain not found" });
+//     }
+//     res.json(domain.rows[0]);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");
