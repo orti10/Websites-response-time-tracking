@@ -43,12 +43,16 @@ The Response Time Tracker application uses the following technology stack:
 This is a simple application that can be used to track the response times of a list of websites. It is efficient, supports multiple users simultaneously, 
 and allows you to use any external library of your choice.
 
-A. Dashboars with data:
+UPDATE:
+![046cac37-c4f0-4316-ba5c-ac4c88b84f4e](https://user-images.githubusercontent.com/44768171/223847828-c6dc45b2-e5d9-4d3c-be64-56ae9943bd8f.jpg)
 
+![39eae163-e04e-486d-8e5d-3c1c00006e09](https://user-images.githubusercontent.com/44768171/223847251-2fe30f15-0e95-4a7d-a94a-fdb6e6307660.jpg)
+
+
+
+A. Dashboars with data:
 ![1f0da43d-9330-411f-89c3-53151f82d858](https://user-images.githubusercontent.com/44768171/223106171-0e3a7688-db20-4223-b476-bbc4c6c9b7f3.jpg)
 
 B. Edit Dialog:
 ![235acd94-e7d0-4a0e-ba91-ce6250b8510f](https://user-images.githubusercontent.com/44768171/223106348-58328b85-5b67-4d7c-8076-5b7ba8899285.jpg)
 
-C. Postgres sql db:
-![39eae163-e04e-486d-8e5d-3c1c00006e09](https://user-images.githubusercontent.com/44768171/223847251-2fe30f15-0e95-4a7d-a94a-fdb6e6307660.jpg)
